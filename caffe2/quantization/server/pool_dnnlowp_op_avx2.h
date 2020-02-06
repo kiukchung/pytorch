@@ -1,13 +1,14 @@
 #pragma once
 
 #include <cstdint>
+#include "caffe2/quantization/server/dnnlowp_op.h"
 
 namespace caffe2 {
 
 /**
  * Optimized using AVX2 intrinsics for max pool 2D in NHWC layout
  */
-void max_pool_avx2(
+CAFFE2_API void max_pool_avx2(
     const std::uint8_t* Xdata,
     int n,
     int height,
@@ -23,7 +24,7 @@ void max_pool_avx2(
     int pad_l,
     std::uint8_t* Ydata);
 
-void average_pool_avx2(
+CAFFE2_API void average_pool_avx2(
     const std::uint8_t* Xdata,
     int n,
     int height,
@@ -45,7 +46,7 @@ void average_pool_avx2(
     int32_t minimum,
     int32_t maximum);
 
-void average_pool_3d_avx2(
+CAFFE2_API void average_pool_3d_avx2(
     const uint8_t* Xdata,
     int n,
     int height,
